@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список турецких сериалов</title>
+    <style>
+        /* Небольшие стили для изображений */
+        .series-images img {
+            max-width: 200px;
+            height: auto;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Сериалы с TurkPlayTV (TP2)</h1>
+    {% if tp2_series %}
+        <ul>
+        {% for series in tp2_series %}
+            <li>
+                <h2>{{ series.title }}</h2>
+                <p>{{ series.description }}</p>
+                <p>URL: <a href="{{ series.url }}" target="_blank">{{ series.url }}</a></p>
+                <div class="series-images">
+                    {% for img_url in series.images %}
+                        <img src="{{ img_url }}" alt="Image for {{ series.title }}">
+                    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет сериалов от источника TP2.</p>
+    {% endif %}
+
+    <h1>Сериалы с TureckiiTV (TP4)</h1>
+    {% if tp4_series %}
+        <ul>
+        {% for series in tp4_series %}
+            <li>
+                <h2>{{ series.title }}</h2>
+                <p>{{ series.description }}</p>
+                <p>URL: <a href="{{ series.url }}" target="_blank">{{ series.url }}</a></p>
+                <div class="series-images">
+                    {% for img_url in series.images %}
+                        <img src="{{ img_url }}" alt="Image for {{ series.title }}">
+                    {% endfor %}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Нет сериалов от источника TP4.</p>
+    {% endif %}
+</body>
+</html>
