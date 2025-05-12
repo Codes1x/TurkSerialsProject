@@ -67,3 +67,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'turkserials.wsgi.application'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from celery.schedules import crontab
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'parse-series-every-hour': {
+        'task': 'serials.tasks.periodic_parse_serials',
+        'schedule': crontab(minute=0, hour='*/1'),  # каждый час
+    },
+}

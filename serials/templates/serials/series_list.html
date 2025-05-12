@@ -2,55 +2,48 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Список турецких сериалов</title>
+    <title>Турецкие сериалы</title>
     <style>
-        /* Небольшие стили для изображений */
         .series-images img {
-            max-width: 200px;
+            width: 200px;
             height: auto;
             margin: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Сериалы с TurkPlayTV (TP2)</h1>
-    {% if tp2_series %}
-        <ul>
-        {% for series in tp2_series %}
-            <li>
-                <h2>{{ series.title }}</h2>
-                <p>{{ series.description }}</p>
-                <p>URL: <a href="{{ series.url }}" target="_blank">{{ series.url }}</a></p>
-                <div class="series-images">
-                    {% for img_url in series.images %}
-                        <img src="{{ img_url }}" alt="Image for {{ series.title }}">
-                    {% endfor %}
-                </div>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Нет сериалов от источника TP2.</p>
-    {% endif %}
 
-    <h1>Сериалы с TureckiiTV (TP4)</h1>
-    {% if tp4_series %}
-        <ul>
-        {% for series in tp4_series %}
-            <li>
-                <h2>{{ series.title }}</h2>
-                <p>{{ series.description }}</p>
-                <p>URL: <a href="{{ series.url }}" target="_blank">{{ series.url }}</a></p>
-                <div class="series-images">
-                    {% for img_url in series.images %}
-                        <img src="{{ img_url }}" alt="Image for {{ series.title }}">
-                    {% endfor %}
-                </div>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Нет сериалов от источника TP4.</p>
-    {% endif %}
+<h2>Сериалы TP2 (TurkPlayTV)</h2>
+<ul>
+{% for series in tp2_series %}
+    <li>
+        <h3>{{ series.title }}</h3>
+        <p>{{ series.description }}</p>
+        <a href="{{ series.url }}" target="_blank">Ссылка</a>
+        <div class="series-images">
+            {% for image in series.images %}
+                <img src="{{ image }}">
+            {% endfor %}
+        </div>
+    </li>
+{% endfor %}
+</ul>
+
+<h2>Сериалы TP3 (TureckiiTV)</h2>
+<ul>
+{% for series in tp3_series %}
+    <li>
+        <h3>{{ series.title }}</h3>
+        <p>{{ series.description }}</p>
+        <a href="{{ series.url }}" target="_blank">Ссылка</a>
+        <div class="series-images">
+            {% for image in series.images %}
+                <img src="{{ image }}">
+            {% endfor %}
+        </div>
+    </li>
+{% endfor %}
+</ul>
+
 </body>
 </html>

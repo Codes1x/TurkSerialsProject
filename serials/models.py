@@ -2,8 +2,8 @@ from django.db import models
 
 class Series(models.Model):
     SOURCE_CHOICES = [
-        ('TP2', 'TP2'),  # TurkPlayTV
-        ('TP4', 'TP4'),  # TureckiiTV
+        ('TP2', 'TurkPlayTV'),
+        ('TP3', 'TureckiiTV'),
     ]
 
     title = models.CharField(max_length=255)
